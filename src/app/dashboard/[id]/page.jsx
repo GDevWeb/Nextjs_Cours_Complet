@@ -1,19 +1,20 @@
 "use client";
-import usersTab from "../usersTab";
-
-export default function UserProfile({ params }) {
+import usersTab from "@/app/users/usersTab";
+import { useRouter } from "next/navigation";
+export default function UserDashboard({ params }) {
+  const router = useRouter();
   const user = usersTab.find((user) => user.id === params.id);
-
-  if (!user) {
-    return (
-      <div className="text-lg font-semibold text-center text-red-500">
-        No user matching !
-      </div>
-    );
-  }
-
   return (
     <>
+      <section className="w-full mb-2 p-2">
+        <button
+          type="button"
+          onClick={router.back}
+          className="min-w-[125px] m-2 px-2 py-4 text-lg font-semibold bg-slate-200 rounded hover:bg-slate-400 hover:text-white transition-all"
+        >
+          Back
+        </button>
+      </section>
       <section className="w-full mb-2 p-2">
         <h1 className="text-3xl p-2 font-semibold text-center">
           Profil of {user.name}
@@ -33,9 +34,3 @@ export default function UserProfile({ params }) {
     </>
   );
 }
-
-// export async function generateStaticParams() {
-//   return user.map((user) => {
-//     id: user.id;
-//   });
-// }

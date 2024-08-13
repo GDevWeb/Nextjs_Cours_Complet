@@ -1,8 +1,8 @@
-const usersHobbiesTab = [
+const usersTab = [
   {
     id: "0",
     name: "Christelle",
-    age: 35,
+    age: 36,
     hobbies: ["gaming", "mangas", "family", "raclette dinner"],
     email: "christelle@fakemail.com",
     userName: "Christelle59",
@@ -13,7 +13,7 @@ const usersHobbiesTab = [
     name: "Océane",
     age: 9,
     hobbies: ["polar", "gaming", "sofa", "chocolate"],
-    email: "océane@fakemail.com",
+    email: "oceane@fakemail.com",
     userName: "Océane59",
     password: "p@ssword59",
   },
@@ -37,4 +37,4 @@ const usersHobbiesTab = [
   },
 ];
 
-export default usersHobbiesTab;
+export default usersTab;

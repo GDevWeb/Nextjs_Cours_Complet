@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
       <body className="p-2">
         <Nav />
         <Header />
-        <main className="w-full min-h-[100vh] flex flex-col items-center p-4 bg-slate-50 rounded">
+        <main className="w-full min-h-[50vh] flex flex-grow flex-col items-center my-[10vh] p-4 bg-slate-50 rounded">
           {children}
         </main>
         <Footer />

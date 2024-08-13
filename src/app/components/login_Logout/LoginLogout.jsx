@@ -1,5 +1,5 @@
 "use client";
-import usersHobbiesTab from "@/app/users/usersTab";
+import usersTab from "@/app/users/usersTab";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -21,6 +21,11 @@ export default function LoginLogout() {
   // others :
 
   // 2.***Functions***
+  /**
+   * handleInputChange function set the inputted values from the login form to the state formData
+   *
+   * @param {*} e
+   */
   const handleInputChange = (e) => {
     const value = e.target.value;
 
@@ -30,6 +35,11 @@ export default function LoginLogout() {
     }));
   };
 
+  /**
+   *
+   * @param {*} e prevent the default submit
+   * @returns
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -37,6 +47,7 @@ export default function LoginLogout() {
 
     // check the data inputted :
     const { email, password } = formData;
+
     const regexMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/gm;
 
     if (email.trim() === "" || !email.match(regexMail)) {
@@ -47,6 +58,7 @@ export default function LoginLogout() {
       return;
     }
 
+    //regexPassword for the schema password must be minimum 8 characters to maximum 64 and contains one special characters and one number
     const regexPassword =
       /^(?=.*[a-z])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{8,64}$/;
     if (password.trim() === "" || !password.match(regexPassword)) {
@@ -59,18 +71,19 @@ export default function LoginLogout() {
 
     checkLogin();
   };
-
+  /**
+   * checkLogin function find if the inputted email exists and next check the inputted password matches with the user email. If true redirects the user to the dashboard page otherwise toggle an error message
+   * @returns
+   */
   const checkLogin = () => {
     // find if an user matches with email inputted:
-    const findUser = usersHobbiesTab.find(
-      (user) => user.email === formData.email
-    );
+    const findUser = usersTab.find((user) => user.email === formData.email);
 
     if (findUser) {
       if (findUser.password === formData.password) {
         console.warn(`User found and authenticated: ${findUser.userName}`);
         setIsAuthenticated(true);
-        router.push("/dashboard");
+        router.push(`/dashboard/${findUser.id}`);
 
         setLoginMessage(`Welcome, ${findUser.userName}!`);
       } else {
@@ -79,11 +92,11 @@ export default function LoginLogout() {
       }
     } else {
       console.warn("no user found");
-      setLoginMessage("Incorrect password");
+      setLoginMessage("no user found");
       return;
     }
 
-    // clear form
+    // clear formData
     setFormData({
       email: "",
       password: "",
@@ -93,45 +106,53 @@ export default function LoginLogout() {
   return (
     <>
       <form onSubmit={handleSubmit} className="flex gap-4">
-        <div className="w-full flex flex-col items-center justify-between">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="email"
-            className="w-full text-center"
-            value={formData.email}
-            onChange={handleInputChange}
-          />
-          {errorMessageInput.inputEmail && (
-            <p className="w-full mt-2 font-medium text-center text-red-600">
-              {errorMessageInput.inputEmail}
-            </p>
-          )}
-        </div>
-        <div className="w-full flex flex-col items-center justify-between">
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="password"
-            className="w-full text-center"
-            value={formData.password}
-            onChange={handleInputChange}
-          />
-          {errorMessageInput.inputPassword && (
-            <p className="w-full mt-2 font-medium text-center text-red-600">
-              {errorMessageInput.inputPassword}
-            </p>
-          )}
-        </div>
+        {isAuthenticated ? (
+          <p className="text-2xl font-semibold text-green-500">
+            {loginMessage}
+          </p>
+        ) : (
+          <>
+            <div className="w-full flex flex-col items-center justify-between">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="email"
+                className="w-full text-center"
+                value={formData.email}
+                onChange={handleInputChange}
+              />
+              {errorMessageInput.inputEmail && (
+                <p className="w-full mt-2 font-medium text-center text-red-600">
+                  {errorMessageInput.inputEmail}
+                </p>
+              )}
+            </div>
+            <div className="w-full flex flex-col items-center justify-between">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="password"
+                className="w-full text-center"
+                value={formData.password}
+                onChange={handleInputChange}
+              />
+              {errorMessageInput.inputPassword && (
+                <p className="w-full mt-2 font-medium text-center text-red-600">
+                  {errorMessageInput.inputPassword}
+                </p>
+              )}
+            </div>
+          </>
+        )}
         <button
           type="submit"
           className="min-w-[125px] p-2 bg-green-300 hover:bg-green-600 rounded"
+          onClick={() => setIsAuthenticated(false)}
         >
           {isAuthenticated ? "Logout" : "Login"}
         </button>
-        {/* {loginMessage && <p className=" mt-4 text-red-600">{loginMessage}</p>} */}
       </form>
     </>
   );
