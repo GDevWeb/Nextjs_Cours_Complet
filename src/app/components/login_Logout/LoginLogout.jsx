@@ -1,7 +1,8 @@
 "use client";
-import usersTab from "@/app/users/usersTab";
+import { AuthenticatedContext } from "@/app/context/AuthenticatedContext";
+import usersTab from "@/app/data/tabs/usersTab";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 export default function LoginLogout() {
   const router = useRouter();
@@ -15,10 +16,10 @@ export default function LoginLogout() {
     inputPassword: "",
   });
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { isAuthenticated, setIsAuthenticated, authenticated } =
+    useContext(AuthenticatedContext);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loginMessage, setLoginMessage] = useState("");
-
-  // others :
 
   // 2.***Functions***
   /**
@@ -152,7 +153,7 @@ export default function LoginLogout() {
         <button
           type="submit"
           className="min-w-[125px] p-2 bg-green-300 hover:bg-green-600 rounded-md text-white"
-          onClick={() => setIsAuthenticated(false)}
+          onClick={() => setIsAuthenticated(!authenticated)}
         >
           {isAuthenticated ? "Logout" : "Login"}
         </button>

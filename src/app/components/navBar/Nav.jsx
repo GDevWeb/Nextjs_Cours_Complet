@@ -1,6 +1,6 @@
+import navLinks from "@/app/components/navBar/navLinksTab";
 import Link from "next/link";
 import LoginLogout from "../login_Logout/loginLogout";
-import navLinks from "./navLinksTab";
 
 export default function Nav() {
   return (
