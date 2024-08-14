@@ -1,4 +1,5 @@
 "use client";
+import Button from "@/app/components/button/Button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import articlesTab from "./articlesTab";
@@ -11,9 +12,7 @@ export default function PageBlog() {
       <section className="w-full px-4">
         <div className="w-full">
           <Link href={"/"}>
-            <button className="min-w-[125px] m-2 px-2 py-4 text-lg font-semibold bg-slate-200 rounded hover:bg-slate-400 hover:text-white transition-all">
-              Back to homepage
-            </button>
+            <Button>{"Back to homepage"}</Button>
           </Link>
         </div>
         <div className="w-full">
