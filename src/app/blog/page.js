@@ -16,7 +16,9 @@ export default function PageBlog() {
           </Link>
         </div>
         <div className="w-full">
-          <h1 className="w-full mb-4 text-center text-3xl">Blog</h1>
+          <h1 className="w-full mb-4 text-3xl text-center text-white">
+            Article List
+          </h1>
         </div>
       </section>
 
@@ -26,13 +28,13 @@ export default function PageBlog() {
             <Link href={`/blog/${article.id}`} key={article.id}>
               <div
                 id="card"
-                className="w-full min-h-[300px] flex-col mb-4 p-4 flex items-center justify-between rounded bg-[#F3F3F3] transition-all hover:shadow-lg"
+                className="w-full min-h-[300px] flex-col mb-4 p-4 flex items-center justify-between rounded bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 transition-all hover:shadow-lg hover:bg-gray-200 dark:hover:bg-gray-700"
               >
                 <section
                   id="cardTitle"
                   className="flex items-center justify-between"
                 >
-                  <h1 className="w-full text-2xl font-semibold text-center ">
+                  <h1 className="w-full text-2xl font-semibold text-center">
                     {article.title}
                   </h1>
                 </section>
@@ -43,13 +45,13 @@ export default function PageBlog() {
                 </section>
                 <section
                   id="cardInfo"
-                  className="w-full flex items-center justify-between mt-2"
+                  className="w-full flex flex-wrap items-center justify-center mt-2"
                 >
-                  <p className="text-sm font-semibold text-[#777]">
+                  <p className="text-sm font-semibold text-center text-gray-600 dark:text-gray-400">
                     Published:{" "}
                     <span className="font-medium">{article.createdAt}</span>
                   </p>
-                  <p className="text-sm font-semibold text-[#777]">
+                  <p className="text-sm font-semibold text-center text-gray-600 dark:text-gray-400">
                     Author:{" "}
                     <span className="font-medium">{article.author}</span>
                   </p>

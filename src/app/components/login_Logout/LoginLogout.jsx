@@ -105,41 +105,44 @@ export default function LoginLogout() {
   // 3. ***Render***
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex gap-4">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col md:flex-row items-center gap-4"
+      >
         {isAuthenticated ? (
           <p className="text-2xl font-semibold text-green-500">
             {loginMessage}
           </p>
         ) : (
           <>
-            <div className="w-full flex flex-col items-center justify-between">
+            <div className="w-full flex flex-col items-center">
               <input
                 type="email"
                 id="email"
                 name="email"
-                placeholder="email"
-                className="w-full text-center"
+                placeholder="Email"
+                className="w-full p-2 text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 dark:bg-gray-600 dark:text-white"
                 value={formData.email}
                 onChange={handleInputChange}
               />
               {errorMessageInput.inputEmail && (
-                <p className="w-full mt-2 font-medium text-center text-red-600">
+                <p className="mt-2 text-sm text-red-600">
                   {errorMessageInput.inputEmail}
                 </p>
               )}
             </div>
-            <div className="w-full flex flex-col items-center justify-between">
+            <div className="w-full flex flex-col items-center">
               <input
                 type="password"
                 id="password"
                 name="password"
-                placeholder="password"
-                className="w-full text-center"
+                placeholder="Password"
+                className="w-full p-2 text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 dark:bg-gray-600 dark:text-white"
                 value={formData.password}
                 onChange={handleInputChange}
               />
               {errorMessageInput.inputPassword && (
-                <p className="w-full mt-2 font-medium text-center text-red-600">
+                <p className="mt-2 text-sm text-red-600">
                   {errorMessageInput.inputPassword}
                 </p>
               )}
@@ -148,7 +151,7 @@ export default function LoginLogout() {
         )}
         <button
           type="submit"
-          className="min-w-[125px] p-2 bg-green-300 hover:bg-green-600 rounded"
+          className="min-w-[125px] p-2 bg-green-300 hover:bg-green-600 rounded-md text-white"
           onClick={() => setIsAuthenticated(false)}
         >
           {isAuthenticated ? "Logout" : "Login"}
