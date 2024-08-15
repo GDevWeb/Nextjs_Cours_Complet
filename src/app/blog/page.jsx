@@ -9,21 +9,21 @@ export default function PageBlog() {
   useEffect(() => {
     async function fetchArticles() {
       try {
-        const res = await fetch("/data/tabs/articlesTab.json", {
-          next: { revalidate: 10 },
+        const response = await fetch("/data/tabs/articlesTab.json", {
+          next: { validate: 10 },
         });
-        if (!res.ok) {
-          throw new Error("Failed to fetch articles");
+        if (!response.ok) {
+          throw new Error("Failed to fetch articles !");
         }
-        const data = await res.json();
+
+        const data = await response.json();
         setArticles(data);
       } catch (error) {
-        console.error("Failed to fetch articles:", error);
+        console.error("Failed to fetch articles", error);
       }
     }
     fetchArticles();
   }, []);
-
   if (articles.length === 0) {
     return <p>Loading data...</p>;
   }
