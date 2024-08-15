@@ -1,9 +1,9 @@
-import articlesTab from "../articlesTab";
+import articlesTab from "../../data/tabs/articlesTab";
 
 export default function Articles({ params }) {
   const article = articlesTab.find((article) => article.id === params.id);
 
-  if (!article)
+  if (!article) {
     return (
       <div className="w-full">
         <h1 className="text-3xl text-center text-red-500">
@@ -11,6 +11,7 @@ export default function Articles({ params }) {
         </h1>
       </div>
     );
+  }
 
   return (
     <div
@@ -42,8 +43,4 @@ export default function Articles({ params }) {
   );
 }
 
-export async function generateStaticParams() {
-  return articlesTab.map((article) => ({
-    id: article.id,
-  }));
-}
+//SSG

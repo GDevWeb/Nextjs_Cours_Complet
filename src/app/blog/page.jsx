@@ -1,4 +1,4 @@
-"use client";
+"use client"; //CSR
 import Button from "@/app/components/button/Button";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -24,6 +24,8 @@ export default function PageBlog() {
     }
     fetchArticles();
   }, []);
+
+  // handle errors fetching data :
   if (articles.length === 0) {
     return <p>Loading data...</p>;
   }
