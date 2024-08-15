@@ -2,7 +2,7 @@
 import Button from "@/app/components/button/Button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import articlesTab from "./articlesTab";
+import articlesTab from "../data/tabs/articlesTab";
 
 export default function PageBlog() {
   const router = useRouter();

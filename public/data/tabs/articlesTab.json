@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "title": "Introduction to Next.js",
+    "description": "A comprehensive guide to getting started with Next.js, the popular React framework.",
+    "author": "Alice Johnson",
+    "createdAt": "2023-01-15"
+  },
+  {
+    "id": "2",
+    "title": "Understanding Static Site Generation",
+    "description": "Learn about Static Site Generation (SSG) in Next.js and how it can improve your web app's performance.",
+    "author": "Bob Smith",
+    "createdAt": "2023-02-10"
+  },
+  {
+    "id": "3",
+    "title": "Dynamic Routing in Next.js",
+    "description": "This article covers how to implement dynamic routing in Next.js applications using the new App Router.",
+    "author": "Charlie Brown",
+    "createdAt": "2023-03-05"
+  },
+  {
+    "id": "4",
+    "title": "Building a Blog with Next.js",
+    "description": "Step-by-step tutorial on how to create a fully-featured blog using Next.js and Markdown.",
+    "author": "Dana White",
+    "createdAt": "2023-04-20"
+  },
+  {
+    "id": "5",
+    "title": "Optimizing Images with Next.js",
+    "description": "Discover the built-in tools in Next.js for optimizing images and improving site performance.",
+    "author": "Ethan Martinez",
+    "createdAt": "2023-05-30"
+  }
+]
