@@ -13,7 +13,7 @@ export function AuthenticatedProvider({ children }) {
 
   useEffect(() => {
     if (isAuthenticated === true) {
-      alert("user is authenticated");
+      console.warn("user is authenticated");
     }
   }, [isAuthenticated]);
 

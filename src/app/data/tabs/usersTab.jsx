@@ -1,3 +1,8 @@
+import anxietyImage from "../../../../public/image/emotions/anxiety.jpg";
+import ennuiImage from "../../../../public/image/emotions/ennui.png";
+import envyImage from "../../../../public/image/emotions/envy.jpg";
+import joyImage from "../../../../public/image/emotions/joy.jpg";
+
 const usersTab = [
   {
     id: "0",
@@ -5,17 +10,19 @@ const usersTab = [
     age: 36,
     hobbies: ["gaming", "mangas", "family", "raclette dinner"],
     email: "christelle@fakemail.com",
-    userName: "Christelle59",
     password: "p@ssword59",
+    userName: "Christelle59",
+    avatar: joyImage,
   },
   {
     id: "1",
-    name: "Océane",
+    name: "Oceane",
     age: 9,
     hobbies: ["polar", "gaming", "sofa", "chocolate"],
     email: "oceane@fakemail.com",
-    userName: "Océane59",
     password: "p@ssword59",
+    userName: "Océane59",
+    avatar: ennuiImage,
   },
   {
     id: "2",
@@ -23,17 +30,19 @@ const usersTab = [
     age: 5,
     hobbies: ["cartoons", "gym", "candy", "sticky my parents"],
     email: "annabeth@fakemail.com",
-    userName: "Annabeth59",
     password: "p@ssword59",
+    userName: "Annabeth59",
+    avatar: envyImage,
   },
   {
     id: "3",
-    name: "Gaëtan",
+    name: "Gaetan",
     age: 39,
     hobbies: ["coding", "learning", "reading", "marvel", "family"],
     email: "gaëtan@fakemail.com",
-    userName: "Gaëtan59",
     password: "p@ssword59",
+    userName: "Gaëtan59",
+    avatar: anxietyImage,
   },
 ];
 

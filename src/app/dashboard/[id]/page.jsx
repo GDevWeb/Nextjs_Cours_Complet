@@ -2,6 +2,7 @@
 import Button from "@/app/components/button/Button";
 import { AuthenticatedContext } from "@/app/context/AuthenticatedContext";
 import usersTab from "@/app/data/tabs/usersTab";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 
@@ -55,6 +56,15 @@ export default function UserDashboard({ params }) {
                 Profil of {user.name}
               </h1>
             </section>
+            <Image
+              src={user.avatar}
+              width={200}
+              height={200}
+              // layout="responsive"
+              alt={`profil image of ${user.name}`}
+              placeholder="blur"
+              className="rounded"
+            />
             <div id="dashboardContent" className="w-[50%] m-auto flex flex-col">
               <section className=" mb-2 p-2 m-auto flex flex-col">
                 <p className="mb-2">
