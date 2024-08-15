@@ -6,10 +6,6 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import "./globals.css";
 
-// export const metadata = {
-//   title: "Next.js - learning",
-//   description: "Learn Nextjs",
-// };
 
 export default function RootLayout({ children }) {
   return (
