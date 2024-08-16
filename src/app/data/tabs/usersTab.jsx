@@ -6,6 +6,7 @@ import joyImage from "../../../../public/image/emotions/joy.jpg";
 const usersTab = [
   {
     id: "0",
+    genre: "women",
     name: "Christelle",
     age: 36,
     hobbies: ["gaming", "mangas", "family", "raclette dinner"],
@@ -16,6 +17,7 @@ const usersTab = [
   },
   {
     id: "1",
+    genre: "women",
     name: "Oceane",
     age: 9,
     hobbies: ["polar", "gaming", "sofa", "chocolate"],
@@ -26,6 +28,7 @@ const usersTab = [
   },
   {
     id: "2",
+    genre: "women",
     name: "Annabeth",
     age: 5,
     hobbies: ["cartoons", "gym", "candy", "sticky my parents"],
@@ -36,6 +39,7 @@ const usersTab = [
   },
   {
     id: "3",
+    genre: "men",
     name: "Gaetan",
     age: 39,
     hobbies: ["coding", "learning", "reading", "marvel", "family"],
