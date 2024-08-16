@@ -3,42 +3,19 @@ import Button from "@/app/components/button/Button";
 import { AuthenticatedContext } from "@/app/context/AuthenticatedContext";
 import usersTab from "@/app/data/tabs/usersTab";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import { notFound, useRouter } from "next/navigation";
+import { useContext } from "react";
 
 export default function UserDashboard({ params }) {
   // ***1.State***
   const { isAuthenticated } = useContext(AuthenticatedContext);
-  const [delay, setDelay] = useState(10);
   // ***2.Functions***
   const router = useRouter();
   const user = usersTab.find((user) => user.id === params.id);
 
-  // Redirection :
-  useEffect(() => {
-    const countDownInterval = setInterval(() => {
-      setDelay((prevDelay) => {
-        if (prevDelay > 0) {
-          return prevDelay - 1;
-        } else {
-          clearInterval(countDownInterval);
-          return 0;
-        }
-      });
-    }, 1000);
-    return () => clearInterval(countDownInterval);
-  }, []);
-
-  useEffect(() => {
-    if (isAuthenticated === false) {
-      const redirectToHome = setTimeout(() => {
-        router.push("/");
-      }, delay * 1000);
-
-      return () => redirectToHome;
-    }
-  }, [isAuthenticated, delay]);
-
+  if (!isAuthenticated) {
+    notFound();
+  }
   // ***3.Render***
   return (
     <>
@@ -86,13 +63,6 @@ export default function UserDashboard({ params }) {
         <p className="w-full m-auto text-2xl font-semibold text-center  text-red-600">
           You must be authenticated to access in this section
         </p>
-      )}
-      {!isAuthenticated ? (
-        <p className="w-full text-2xl text-center text-orange-500">
-          You'll be redirected in {delay} seconds...
-        </p>
-      ) : (
-        ""
       )}
     </>
   );
